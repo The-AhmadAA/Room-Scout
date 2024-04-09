@@ -4,7 +4,7 @@ but hoping to add some more functionality to it eventually-->
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Room Checker</title>
+    <title>Room Scout</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -52,7 +52,7 @@ but hoping to add some more functionality to it eventually-->
 
     </script>
 </head>
-<main>
+<main class="h-full">
     <div class="navbar bg-slate-700 text-white">
         <div class="flex-1">
           <p class="font-bold text-2xl px-5">Room Scout</p>
@@ -86,14 +86,14 @@ but hoping to add some more functionality to it eventually-->
           </ul>
         </div> -->
       </div>
-        <section class="flex flex-col justify-center m-auto">
+        <section class="flex flex-col justify-center m-auto h-full">
 
         <div class="hero-content text-center self-center py-20">
           <div class="max-w-md">
-            <h1 class="text-5xl font-bold">View room status</h1>
-            <p class="py-6">Enter the building and room number.</p>
+            <h1 class="text-5xl font-bold">View UQ room status</h1>
+            <p class="py-6">Enter the UQ building and room number (including teaching rooms).</p>
             
-            <form id="room_form" class="flex flex-col gap-5 justify-middle" onsubmit="event.preventDefault(); let result = open_url(this.building.value, this.room.value);">
+            <form id="room_form" class="flex flex-col gap-10 justify-middle" onsubmit="event.preventDefault(); let result = open_url(this.building.value, this.room.value);">
                 <div>
                     <input type="text" name="building" required placeholder="Building number" class="input input-bordered w-full max-w-xs" />
                 </div>
@@ -108,5 +108,9 @@ but hoping to add some more functionality to it eventually-->
         </div>
     </section>
 </main>
-
+<footer class="footer footer-center p-4 bg-slate-800 text-white text-base-content absolute inset-x-0 bottom-0">
+    <aside>
+      <p>Copyright © 2024 - <a href="https://github.com/The-AhmadAA/Room-Scout">Ahmad Abu-Aysha</a></p>
+    </aside>
+  </footer>
 </html>
