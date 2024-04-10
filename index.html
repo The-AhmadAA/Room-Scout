@@ -25,6 +25,11 @@ but hoping to add some more functionality to it eventually-->
         const re1 = /(?:^[0-9]{2,2}[A-Z]{0,1}$)/;
         const re2 = /(?:^[A-Z]{0,1}[0-9]{3,3}$)/;
 
+        // Remove the error if it exists
+        if (document.getElementById('room-error')) {
+            document.getElementById('room-error').remove();
+        }
+
         if ( re1.test(bldg) && re2.test(room) ) {
         //   construct the url to send the user to
           console.log(
@@ -40,7 +45,7 @@ but hoping to add some more functionality to it eventually-->
         } else {
           // Code to execute if bldg and room are not valid
           console.log("Alert being generated");
-          const warning = `<div role="alert" class="alert alert-error ">
+          const warning = `<div role="alert" id="room-error" class="alert alert-error ">
                     
                     <span>Invalid building or room number - check your input</span>
                 </div>`;
@@ -108,7 +113,7 @@ but hoping to add some more functionality to it eventually-->
         </div>
     </section>
 </main>
-<footer class="footer footer-center p-4 bg-slate-800 text-white text-base-content absolute inset-x-0 bottom-0">
+<footer class="footer footer-center p-4 bg-slate-800 text-white text-base-content fixed inset-x-0 bottom-0">
     <aside>
       <p>Copyright © 2024 - <a href="https://github.com/The-AhmadAA/Room-Scout">Ahmad Abu-Aysha</a></p>
     </aside>
