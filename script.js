@@ -10,7 +10,7 @@ function fetch_room_status(bldg, room) {
   if (validate_location(bldg, room)) {
     //   construct the url to send the user to
     console.log(
-      `http://splus.uq.edu.au/Signage/Reports/BootstrapList.aspx?objects=${bldg}-${room}&template=bootstrap_location_up_next&searchbydates=1&start=0&end=1018`
+      `https://splus.uq.edu.au/Signage/Reports/BootstrapList.aspx?objects=${bldg}-${room}&template=bootstrap_location_up_next&searchbydates=1&start=0&end=1018`
     );
 
     // remove any previous instances of the room result
@@ -22,7 +22,7 @@ function fetch_room_status(bldg, room) {
     iframe.id = "room_result";
     iframe.title = "room_result";
     iframe.className = "w-full h-screen py-10";
-    iframe.src = `http://splus.uq.edu.au/Signage/Reports/BootstrapList.aspx?objects=${bldg}-${room}&template=bootstrap_location_up_next&searchbydates=1&start=0&end=1018`;
+    iframe.src = `https://splus.uq.edu.au/Signage/Reports/BootstrapList.aspx?objects=${bldg}-${room}&template=bootstrap_location_up_next&searchbydates=1&start=0&end=1018`;
 
     document.getElementById("main").insertAdjacentElement("beforeend", iframe);
 
@@ -59,7 +59,7 @@ function single_room_multi_day(bldg, room, from, to) {
     return false;
   } else {
     open(
-      `http://splus.uq.edu.au/TimetableYear/Reports/CoreCalendar.aspx?template=location_grid_bigscreen&objects=${bldg}-${room}&days=${date_from.getDay()}-${date_to.getDay()}&weeks=t&periods=5-33`,
+      `https://splus.uq.edu.au/TimetableYear/Reports/CoreCalendar.aspx?template=location_grid_bigscreen&objects=${bldg}-${room}&days=${date_from.getDay()}-${date_to.getDay()}&weeks=t&periods=5-33`,
       "_blank"
     );
     return true;
@@ -77,8 +77,8 @@ function create_error_message(element, message) {
 }
 
 function validate_location(bldg, room) {
-  const bldg_re = /(?:^[0-9]{2,2}[A-Z]{0,1}$)/;
-  const room_re = /(?:^[A-Z]{0,1}[0-9]{3,3}[A-Z]{0,1}$)/; // for rooms without a letter suffix (most rooms)
+  const bldg_re = /(?:^[0-9]{2,2}[a-zA-Z]{0,1}$)/;
+  const room_re = /(?:^[a-zA-Z]{0,1}[0-9]{3,3}[a-zA-Z]{0,1}$)/; // for rooms without a letter suffix (most rooms)
 
   if (bldg_re.test(bldg) && room_re.test(room)) {
     return true;
