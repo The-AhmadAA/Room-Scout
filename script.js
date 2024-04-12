@@ -1,3 +1,6 @@
+/* Retrieves the current status of a room. If the building and room number are not the right
+ * format will create an error alert above the search fields
+ */
 function fetch_room_status(bldg, room) {
   // Remove the error if it exists
   if (document.getElementById("room-error")) {
@@ -10,6 +13,7 @@ function fetch_room_status(bldg, room) {
       `http://splus.uq.edu.au/Signage/Reports/BootstrapList.aspx?objects=${bldg}-${room}&template=bootstrap_location_up_next&searchbydates=1&start=0&end=1018`
     );
 
+    // remove any previous instances of the room result
     if (document.getElementById("room_result")) {
       document.getElementById("room_result").remove();
     }
@@ -74,7 +78,7 @@ function create_error_message(element, message) {
 
 function validate_location(bldg, room) {
   const bldg_re = /(?:^[0-9]{2,2}[A-Z]{0,1}$)/;
-  const room_re = /(?:^[A-Z]{0,1}[0-9]{3,3}$)/;
+  const room_re = /(?:^[A-Z]{0,1}[0-9]{3,3}[A-Z]{0,1}$)/; // for rooms without a letter suffix (most rooms)
 
   if (bldg_re.test(bldg) && room_re.test(room)) {
     return true;
